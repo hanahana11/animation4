@@ -7,11 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F80222FEEB8F1DBC308868D /* Pods_animation4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F50347B3951859535CBF9F46 /* Pods_animation4.framework */; };
 		7F68B5EC21DF9D9900C40AEC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F68B5EB21DF9D9900C40AEC /* AppDelegate.swift */; };
 		7F68B5EE21DF9D9900C40AEC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F68B5ED21DF9D9900C40AEC /* ViewController.swift */; };
 		7F68B5F121DF9D9900C40AEC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F68B5EF21DF9D9900C40AEC /* Main.storyboard */; };
 		7F68B5F321DF9D9A00C40AEC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F68B5F221DF9D9A00C40AEC /* Assets.xcassets */; };
 		7F68B5F621DF9D9A00C40AEC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F68B5F421DF9D9A00C40AEC /* LaunchScreen.storyboard */; };
+		7F68B5FE21E08D8400C40AEC /* BaseChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F68B5FD21E08D8400C40AEC /* BaseChart.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,10 @@
 		7F68B5F221DF9D9A00C40AEC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7F68B5F521DF9D9A00C40AEC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7F68B5F721DF9D9A00C40AEC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7F68B5FD21E08D8400C40AEC /* BaseChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseChart.swift; sourceTree = "<group>"; };
+		9D184742F4A261E195ABF5E1 /* Pods-animation4.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-animation4.debug.xcconfig"; path = "Pods/Target Support Files/Pods-animation4/Pods-animation4.debug.xcconfig"; sourceTree = "<group>"; };
+		A0B11A574229C3A0D123E8B2 /* Pods-animation4.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-animation4.release.xcconfig"; path = "Pods/Target Support Files/Pods-animation4/Pods-animation4.release.xcconfig"; sourceTree = "<group>"; };
+		F50347B3951859535CBF9F46 /* Pods_animation4.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_animation4.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +35,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F80222FEEB8F1DBC308868D /* Pods_animation4.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		48C9600E21C04E8F01006237 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9D184742F4A261E195ABF5E1 /* Pods-animation4.debug.xcconfig */,
+				A0B11A574229C3A0D123E8B2 /* Pods-animation4.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		600B29DC82AA4734DF45ADC7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F50347B3951859535CBF9F46 /* Pods_animation4.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		7F68B5DF21DF9D9800C40AEC = {
 			isa = PBXGroup;
 			children = (
 				7F68B5EA21DF9D9900C40AEC /* animation4 */,
 				7F68B5E921DF9D9900C40AEC /* Products */,
+				48C9600E21C04E8F01006237 /* Pods */,
+				600B29DC82AA4734DF45ADC7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -55,6 +81,7 @@
 			isa = PBXGroup;
 			children = (
 				7F68B5EB21DF9D9900C40AEC /* AppDelegate.swift */,
+				7F68B5FD21E08D8400C40AEC /* BaseChart.swift */,
 				7F68B5ED21DF9D9900C40AEC /* ViewController.swift */,
 				7F68B5EF21DF9D9900C40AEC /* Main.storyboard */,
 				7F68B5F221DF9D9A00C40AEC /* Assets.xcassets */,
@@ -71,9 +98,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7F68B5FA21DF9D9A00C40AEC /* Build configuration list for PBXNativeTarget "animation4" */;
 			buildPhases = (
+				1440B832AE46B0B6797D700A /* [CP] Check Pods Manifest.lock */,
 				7F68B5E421DF9D9900C40AEC /* Sources */,
 				7F68B5E521DF9D9900C40AEC /* Frameworks */,
 				7F68B5E621DF9D9900C40AEC /* Resources */,
+				ECB822922D9879B223500457 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -130,11 +159,59 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1440B832AE46B0B6797D700A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-animation4-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		ECB822922D9879B223500457 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-animation4/Pods-animation4-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-animation4/Pods-animation4-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		7F68B5E421DF9D9900C40AEC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7F68B5FE21E08D8400C40AEC /* BaseChart.swift in Sources */,
 				7F68B5EE21DF9D9900C40AEC /* ViewController.swift in Sources */,
 				7F68B5EC21DF9D9900C40AEC /* AppDelegate.swift in Sources */,
 			);
@@ -280,6 +357,7 @@
 		};
 		7F68B5FB21DF9D9A00C40AEC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9D184742F4A261E195ABF5E1 /* Pods-animation4.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -297,6 +375,7 @@
 		};
 		7F68B5FC21DF9D9A00C40AEC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A0B11A574229C3A0D123E8B2 /* Pods-animation4.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
