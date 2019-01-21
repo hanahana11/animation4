@@ -20,14 +20,14 @@ class ViewController: UIViewController {
         
     }
     
-    override func didReceiceMemoeyWarning(){
+    override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        
     }
+    
 
     func makeSet(values: [Double]) -> (types: [ActivityType], values: [Double]) {
         let minutesValues = values.map{$0 * 60}
-        let types: [ActivityType] = [.walking, .blank, .training, .blank]
+        let types: [ActivityType] = [.sleeping, .blank, .training, .blank]
         return (types, minutesValues)
         
     }
@@ -38,7 +38,7 @@ class ViewController: UIViewController {
         }
         
         let entries = values.map{PieChartDataEntry(value: Double($0))}
-        dataSet.valueFormatter = CustomLabelFormatter(types, values: values)
+        dataSet.valueFormatter = CustomLabelFomatter(types: types, values: values)
         pieChart.notifyDataSetChanged()
         
     }
@@ -46,7 +46,7 @@ class ViewController: UIViewController {
     func makePieChart() {
         let hourValues = [8,4,2,9.6,0.4]
         let minutesValues = hourValues.map{$0 * 60}
-        let types: [activityType] = [.walking, .blank, .training, .blank, training]
+        let types: [ActivityType] = [.sleeping, .blank, .training, .blank, .training]
         
         let entries = minutesValues.map{ element -> PieChartDataEntry in
             let value = Double(element)
@@ -60,24 +60,25 @@ class ViewController: UIViewController {
     
         minutesValues)
         
-        let data = PieChartData(dataSets: dataSet)
+        let data = PieChartData(dataSet: dataSet)
         pieChart.data = data
         
     }
 }
 
 enum ActivityType: String {
-    case walking = "ウォーキング"
-    case training = "tトレーニング"
+    case sleeping = "睡眠"
+    case training = "トレーニング"
     case blank = "空白"
-    
 }
 
 class CustomLabelFomatter: NSObject, IValueFormatter {
     
-    let types = [ActivityType]
     
-    let values = [Double]
+    
+    var types = [ActivityType]()
+    
+    var values = [Double]()
     
     init(types: [ActivityType], values: [Double]) {
         self.types = types
@@ -87,7 +88,7 @@ class CustomLabelFomatter: NSObject, IValueFormatter {
     func convert(value: Double) -> String {
         guard let convertedString = values
              .enumerated()
-            .filter($0.element == value})
+            .filter({$0.element == value})
     .map({ tuple -> String in
     
     let index = tuple.offset
@@ -115,10 +116,11 @@ class CustomLabelFomatter: NSObject, IValueFormatter {
 
 }
 
-func stringForValue(_ value: Double, entry: ChartDataEntry, dataSerIndex: Int,
+    func stringForValue(_ value: Double, entry: ChartDataEntry, dataSetIndex dataSerIndex: Int,
                     viewPortHandler: ViewPortHandler?) -> String {
     print(value)
     return convert(value: value)
   }
 
 
+}
