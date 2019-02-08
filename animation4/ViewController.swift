@@ -187,6 +187,46 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         print("value: \(dataArray[row])")
     }
     
+    func makeSet(values: [Double]) -> (types: [ActivityType], values: [Double]) {
+        let minutesValues = values.map{$0 * 60}
+        let types: [ActivityType] = [.sleeping, .blank, .training, .blank]
+        return (types, minutesValues)
+        
+    }
+    
+    func change(types: [ActivityType], values: [Double]) {
+        guard let dataSet = pieChart.data?.dataSets.first as? PieChartDataSet else {
+            fatalError()
+        }
+        
+        let entries = values.map{PieChartDataEntry(value: Double($0))}
+        dataSet.values = entries
+        dataSet.valueFormatter = CustomLabelFomatter(types: types, values: values)
+        pieChart.notifyDataSetChanged()
+        
+    }
+    
+    func makePieChart() {
+        let hourValues = [10.0, 2.0]
+        let minutesValues = hourValues.map{$0 * 60}
+        let types: [ActivityType] = [.sleeping, .blank, .training, .blank, .training]
+        
+        let entries = minutesValues.map{ element -> PieChartDataEntry in
+            let value = Double(element)
+            return PieChartDataEntry(value: value)
+        }
+        
+        let dataSet = PieChartDataSet(values: entries, label: "")
+        
+        dataSet.colors = [.purple, .gray, .blue, .gray, .blue]
+        dataSet.valueFormatter = CustomLabelFomatter(types: types, values:
+            
+            minutesValues)
+        
+        let data = PieChartData(dataSet: dataSet)
+        pieChart.data = data
+        
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -208,46 +248,46 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
 //    }
 
 
-func makeSet(values: [Double]) -> (types: [ActivityType], values: [Double]) {
-    let minutesValues = values.map{$0 * 60}
-    let types: [ActivityType] = [.sleeping, .blank, .training, .blank]
-    return (types, minutesValues)
-    
-}
-
-func change(types: [ActivityType], values: [Double]) {
-    guard let dataSet = PieChart.data?.dataSets.first as? PieChartDataSet else {
-        fatalError()
-    }
-    
-    let entries = values.map{PieChartDataEntry(value: Double($0))}
-    dataSet.values = entries
-    dataSet.valueFormatter = CustomLabelFomatter(types: types, values: values)
-    PieChart.notifyDataSetChanged()
-    
-}
-
-func makePieChart() {
-    let hourValues = [10.0, 2.0]
-    let minutesValues = hourValues.map{$0 * 60}
-    let types: [ActivityType] = [.sleeping, .blank, .training, .blank, .training]
-    
-    let entries = minutesValues.map{ element -> PieChartDataEntry in
-        let value = Double(element)
-        return PieChartDataEntry(value: value)
-    }
-    
-    let dataSet = PieChartDataSet(values: entries, label: "")
-    
-    dataSet.colors = [.purple, .gray, .blue, .gray, .blue]
-    dataSet.valueFormatter = CustomLabelFomatter(types: types, values:
-        
-        minutesValues)
-    
-    let data = PieChartData(dataSet: dataSet)
-    PieChart.data = data
-    
-}
+//func makeSet(values: [Double]) -> (types: [ActivityType], values: [Double]) {
+//    let minutesValues = values.map{$0 * 60}
+//    let types: [ActivityType] = [.sleeping, .blank, .training, .blank]
+//    return (types, minutesValues)
+//
+//}
+//
+//func change(types: [ActivityType], values: [Double]) {
+//    guard let dataSet = PieChart.data?.dataSets.first as? PieChartDataSet else {
+//        fatalError()
+//    }
+//
+//    let entries = values.map{PieChartDataEntry(value: Double($0))}
+//    dataSet.values = entries
+//    dataSet.valueFormatter = CustomLabelFomatter(types: types, values: values)
+//    PieChart.notifyDataSetChanged()
+//
+//}
+//
+//func makePieChart() {
+//    let hourValues = [10.0, 2.0]
+//    let minutesValues = hourValues.map{$0 * 60}
+//    let types: [ActivityType] = [.sleeping, .blank, .training, .blank, .training]
+//
+//    let entries = minutesValues.map{ element -> PieChartDataEntry in
+//        let value = Double(element)
+//        return PieChartDataEntry(value: value)
+//    }
+//
+//    let dataSet = PieChartDataSet(values: entries, label: "")
+//
+//    dataSet.colors = [.purple, .gray, .blue, .gray, .blue]
+//    dataSet.valueFormatter = CustomLabelFomatter(types: types, values:
+//
+//        minutesValues)
+//
+//    let data = PieChartData(dataSet: dataSet)
+//    PieChart.data = data
+//
+//}
 
 
 enum ActivityType: String {
