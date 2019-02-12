@@ -11,6 +11,7 @@ import Charts
 
 class BaseChart: UIView {
     @IBOutlet weak var chartView: PieChartView!
+    
 
     /*
     // Only override draw() if you perform custom drawing.
@@ -20,6 +21,7 @@ class BaseChart: UIView {
     }
     */
     func setupGraph() {
+        
         chartView.usePercentValuesEnabled = true
         
         let values: [Double] = [0,1,1,1,1]
@@ -30,6 +32,7 @@ class BaseChart: UIView {
                 "icon", in: Bundle(for: self.classForCoder),compatibleWith: nil)))
         }
         
+        
         let dateSet = PieChartDataSet(values: entries, label: "ラベル")
         
         dateSet.colors =
@@ -38,6 +41,7 @@ class BaseChart: UIView {
         let chartDate = PieChartData(dataSet: dateSet)
         
         chartView.data = chartDate
+        
         
     }
 
