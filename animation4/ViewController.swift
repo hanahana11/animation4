@@ -9,6 +9,7 @@
 
 import UIKit
 import Charts
+
 //
 //
 //        // Do any additional setup after loading the view, typically from a nib.
@@ -21,10 +22,23 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
 //    @IBOutlet weak var pieChart: PieChartView!
     @IBOutlet weak var pieChart: PieChartView!
     
+    @IBOutlet var label: UILabel!
+    
+    var count : Float = 0.0
+    
+    var targetTime : Float = 0.0
+    
+    
+    var timer: Timer = Timer()
+    
     // 表示する値の配列.
     var dataArray:[Int] = ([Int])(0...100)
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        makePieChart()
+        
+        targetTime = count
         
         // UIPickerViewを生成.
         //        myUIPicker = pickerView()
@@ -67,6 +81,8 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         print("row: \(row)")
         print("value: \(dataArray[row])")
+        
+        count = Float(dataArray[row])
         
     }
     
@@ -115,7 +131,31 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         super.didReceiveMemoryWarning()
     }
 
+    @objc func down() {
+        count = count - 1.0
+        label.text = String(format: "%.1f", count)
+        
+    }
+   
+    @IBAction func start(){
+    
+        if !timer.isValid {
+            timer = Timer.scheduledTimer(timeInterval: 1.0,
+                                         target: self,
+                                         selector: #selector(self.down),
+                                         userInfo: nil,
+                                         repeats: true
+            )
+        }
+    }
 
+    @IBAction func stop(){
+        if timer.isValid{
+            timer.invalidate()
+            
+            print( targetTime - count )
+        }
+    }
 enum ActivityType: String {
     case sleeping = "睡眠"
     case training = "トレーニング"
