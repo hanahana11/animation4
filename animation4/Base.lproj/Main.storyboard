@@ -27,7 +27,7 @@
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                     </pickerView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x3D-fL-4yR">
-                                        <rect key="frame" x="138" y="270" width="99" height="50"/>
+                                        <rect key="frame" x="137" y="338" width="100" height="65"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.7651510305" green="0.72127005099999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -35,7 +35,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LZE-RS-3u7">
-                                        <rect key="frame" x="159" y="390" width="56" height="30"/>
+                                        <rect key="frame" x="68" y="431" width="90" height="51"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="1" green="0.70501459850000003" blue="0.98503727969999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -45,7 +45,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ee2-oS-8bd">
-                                        <rect key="frame" x="159" y="462" width="56" height="30"/>
+                                        <rect key="frame" x="212" y="431" width="90" height="51"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="1" green="0.70501459850000003" blue="0.98503727969999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -54,14 +54,26 @@
                                             <action selector="stop" destination="Rra-KP-jXo" eventType="touchUpInside" id="17k-RJ-t3o"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ldp-JM-D7Z">
+                                        <rect key="frame" x="142" y="49" width="90" height="51"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="1" green="0.70501459850000003" blue="0.98503727969999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="戻る"/>
+                                        <connections>
+                                            <action selector="reset" destination="Rra-KP-jXo" eventType="touchUpInside" id="bX8-7E-U9P"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="kxB-4k-kWJ"/>
                     </view>
                     <connections>
+                        <outlet property="Button" destination="LZE-RS-3u7" id="gv0-FK-VA9"/>
+                        <outlet property="Button2" destination="ee2-oS-8bd" id="H1X-xd-UtI"/>
+                        <outlet property="Button3" destination="Ldp-JM-D7Z" id="G9A-Lm-dhA"/>
                         <outlet property="label" destination="x3D-fL-4yR" id="A3Z-qm-rsc"/>
                         <outlet property="myUIPicker" destination="6iB-zR-a1m" id="FeP-Q7-VeN"/>
                         <outlet property="pieChart" destination="cV1-57-7qd" id="GOL-jR-uDT"/>

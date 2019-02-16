@@ -24,9 +24,13 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     @IBOutlet var label: UILabel!
     
+    @IBOutlet var Button: UIButton!
+    @IBOutlet var Button2: UIButton!
+    @IBOutlet var Button3: UIButton!
+    
     var count : Float = 0.0
     
-    var targetTime : Float = 0.0
+    var targetTime : Float!
     
     
     var timer: Timer = Timer()
@@ -36,15 +40,14 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        makePieChart()
+        Button3.isHidden = true
         
-        targetTime = count
         
         // UIPickerViewを生成.
         //        myUIPicker = pickerView()
         
         // サイズを指定する.
-        myUIPicker.frame = CGRect(x: 0, y: 0, width: self.view.bounds.width, height: 180.0)
+        myUIPicker.frame = CGRect(x: 0, y: 500, width: self.view.bounds.width, height: 180.0)
         
         // Delegateを設定する.
         myUIPicker.delegate = self
@@ -84,6 +87,8 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         
         count = Float(dataArray[row])
         
+        targetTime = count
+        
     }
     
     func makeSet(values: [Double]) -> (types: [ActivityType], values: [Double]) {
@@ -107,7 +112,8 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     func makePieChart() {
         
-        let hourValues = [10.0, 2.0]
+        
+        let hourValues = [Double(targetTime - count), Double(count)]
         let minutesValues = hourValues.map{$0 * 60}
         let types: [ActivityType] = [.sleeping, .blank, .training, .blank, .training]
         
@@ -133,11 +139,17 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
 
     @objc func down() {
         count = count - 1.0
+        if count <= 0{
+            timer.invalidate()
+            
+//            Button3.isHidden = true
+            
+        }
         label.text = String(format: "%.1f", count)
         
     }
    
-    @IBAction func start(){
+    @IBAction func start(){//スタートボタンが一度だけ押された時に呼ばれるメソッド
     
         if !timer.isValid {
             timer = Timer.scheduledTimer(timeInterval: 1.0,
@@ -145,76 +157,81 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
                                          selector: #selector(self.down),
                                          userInfo: nil,
                                          repeats: true
+            
             )
         }
+        Button3.isHidden = true
     }
 
     @IBAction func stop(){
-        if timer.isValid{
+        if timer.isValid{//タイマーが動いてる時タイマーを止める
             timer.invalidate()
             
-            print( targetTime - count )
+            print( "\(targetTime) - \(count)" )
+        
+            makePieChart()
+            Button.isHidden = true
+            Button2.isHidden = true
+            label.isHidden = true
+            myUIPicker.isHidden = true
+            
+            Button3.isHidden = false
+            
+        }
+
+    }
+    @IBAction func reset(){
+        
+        Button.isHidden = false
+        Button2.isHidden = false
+        label.isHidden = false
+        myUIPicker.isHidden = false
+        
+        Button3.isHidden = false
+    
+        
+      
+        
+        
+    }
+    
+    enum ActivityType: String {
+        case sleeping = "達成時間"
+        case training = "トレーニング"
+        case blank = "空白"
+    }
+
+    class CustomLabelFomatter: NSObject, IValueFormatter {
+        
+        var types = [ActivityType]()
+        var values = [Double]()
+        init(types: [ActivityType], values: [Double]) {
+            self.types = types
+            self.values = values
+        }
+        func convert(value: Double) -> String {
+            guard let convertedString = values
+                .enumerated()
+                .filter({$0.element == value})
+                .map({ tuple -> String in
+                    let index = tuple.offset
+                    let type = types[index]
+                    if value < 0.5 * 60 {
+                        print("早期リターン")
+                        return ""
+                    }
+                    print("処理継続中")
+                    switch type {
+                    case .blank: return ""
+                    default: return type.rawValue
+                    }
+                }).first else {fatalError()}
+            return convertedString
+        }
+        func stringForValue(_ value: Double, entry: ChartDataEntry, dataSetIndex dataSerIndex: Int,
+                            viewPortHandler: ViewPortHandler?) -> String {
+            print(value)
+            return convert(value: value)
         }
     }
-enum ActivityType: String {
-    case sleeping = "睡眠"
-    case training = "トレーニング"
-    case blank = "空白"
-}
-
-class CustomLabelFomatter: NSObject, IValueFormatter {
-    
-    
-    
-    var types = [ActivityType]()
-    
-    var values = [Double]()
-    
-    init(types: [ActivityType], values: [Double]) {
-        self.types = types
-        self.values = values
-    }
-    
-    func convert(value: Double) -> String {
-        guard let convertedString = values
-            .enumerated()
-            .filter({$0.element == value})
-            .map({ tuple -> String in
-                
-                let index = tuple.offset
-                let type = types[index]
-                
-                if value < 0.5 * 60 {
-                    print("早期リターン")
-                    return ""
-                    
-                    
-                }
-                
-                print("処理継続中")
-                
-                switch type {
-                    
-                case .blank: return ""
-                default: return type.rawValue
-                    
-                }
-                
-            }).first else {fatalError()}
-        
-        return convertedString
-        
-    }
-    
-    func stringForValue(_ value: Double, entry: ChartDataEntry, dataSetIndex dataSerIndex: Int,
-                        viewPortHandler: ViewPortHandler?) -> String {
-        print(value)
-        return convert(value: value)
-        
-        
-    }
-    
-    
-}
-
 }
