@@ -34,9 +34,10 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     
     var timer: Timer = Timer()
-    
     var dataSet: PieChartDataSet!
+    
     // 表示する値の配列.
+    
     var dataArray:[Int] = ([Int])(0...100)
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -123,7 +124,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             return PieChartDataEntry(value: value)
         }
         
-        let dataSet = PieChartDataSet(values: entries, label: "")
+        dataSet = PieChartDataSet(values: entries, label: "")
 
         dataSet.colors = [.purple, .gray, .blue, .gray, .blue]
         dataSet.valueFormatter = CustomLabelFomatter(types: types, values:
