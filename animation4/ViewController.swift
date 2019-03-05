@@ -28,7 +28,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     @IBOutlet var Button2: UIButton!
     @IBOutlet var Button3: UIButton!
     
-    var count : Float = 0.0
+    var count : Float = 0
     
     var targetTime : Float!
     
@@ -37,6 +37,8 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     var dataSet: PieChartDataSet!
     
     // 表示する値の配列.
+    
+    
     
     var dataArray:[Int] = ([Int])(0...100)
     override func viewDidLoad() {
@@ -49,7 +51,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         //        myUIPicker = pickerView()
         
         // サイズを指定する.
-        myUIPicker.frame = CGRect(x: 0, y: 500, width: self.view.bounds.width, height: 180.0)
+        myUIPicker.frame = CGRect(x: 0, y: 700, width: self.view.bounds.width, height: 150.0)
         
         // Delegateを設定する.
         myUIPicker.delegate = self
@@ -139,31 +141,51 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         super.didReceiveMemoryWarning()
     }
 
-    @objc func down() {
-        count = count - 1.0
+    
+    @objc func down() {//1秒に一回よんでる
+
         if count <= 0{
             timer.invalidate()
+            print("カウントがゼロになったお")
+            makePieChart()
+            Button.isHidden = true
+            Button2.isHidden = true
+            label.isHidden = true
+            myUIPicker.isHidden = true
+            
+            Button3.isHidden = false
+                
+            }
+            
+        count = count - 1
             
 //            Button3.isHidden = true
             
-        }
-        label.text = String(format: "%.1f", count)
         
+
+        label.text = String( "\(Int(floor(count/60))):\(Int(count)%60)")//表示してる
+       print("\(floor(count/60))、\(count)") // 3.0 (切り捨て)
     }
+    
    
     @IBAction func start(){//スタートボタンが一度だけ押された時に呼ばれるメソッド
     
         if !timer.isValid {
-            timer = Timer.scheduledTimer(timeInterval: 1.0,
+            timer = Timer.scheduledTimer(timeInterval: 1.0 ,
                                          target: self,
                                          selector: #selector(self.down),
                                          userInfo: nil,
-                                         repeats: true
-            
-            )
+                                         repeats: true)
         }
         Button3.isHidden = true
+
+    
+//        if count >= 60{
+//            label.text = String(count - 1)
+//        }
+        
     }
+    
 
     @IBAction func stop(){
         if timer.isValid{//タイマーが動いてる時タイマーを止める
@@ -171,7 +193,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             
             print( "\(targetTime) - \(count)" )
         
-            makePieChart()
+            makePieChart()//グラフ出す
             Button.isHidden = true
             Button2.isHidden = true
             label.isHidden = true
@@ -180,7 +202,8 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             Button3.isHidden = false
             
         }
-
+    
+        
     }
     @IBAction func reset(){
         
@@ -193,7 +216,8 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
         dataSet.clear()
       
-        
+        let data = PieChartData(dataSet: dataSet)
+        pieChart.data = data
         
     }
     
@@ -235,5 +259,9 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             print(value)
             return convert(value: value)
         }
+        
+        
+        }
     }
-}
+
+
