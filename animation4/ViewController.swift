@@ -51,7 +51,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         //        myUIPicker = pickerView()
         
         // サイズを指定する.
-        myUIPicker.frame = CGRect(x: 0, y: 700, width: self.view.bounds.width, height: 150.0)
+//        myUIPicker.frame = CGRect(x: 0, y: 700, width: self.view.bounds.width, height: 150.0)
         
         // Delegateを設定する.
         myUIPicker.delegate = self
@@ -155,10 +155,11 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             
             Button3.isHidden = false
                 
-            }
+        }else{//カウントが0出ない時
             
         count = count - 1
             
+        }
 //            Button3.isHidden = true
             
         
@@ -212,7 +213,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         label.isHidden = false
         myUIPicker.isHidden = false
         
-        Button3.isHidden = false
+        Button3.isHidden = true
     
         dataSet.clear()
       
