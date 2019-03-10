@@ -46,7 +46,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         
         Button3.isHidden = true
         
-        
+
         // UIPickerViewを生成.
         //        myUIPicker = pickerView()
         
@@ -60,7 +60,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         myUIPicker.dataSource = self
         
         // Viewに追加する.
-        self.view.addSubview(myUIPicker)
+//        self.view.addSubview(myUIPicker)
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -92,6 +92,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         count = Float(dataArray[row])
         
         targetTime = count
+        
         
     }
     
@@ -177,10 +178,11 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
                                          selector: #selector(self.down),
                                          userInfo: nil,
                                          repeats: true)
+            
         }
         Button3.isHidden = true
 
-    
+        count = count * 60
 //        if count >= 60{
 //            label.text = String(count - 1)
 //        }
