@@ -89,8 +89,8 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         print("row: \(row)")
         print("value: \(dataArray[row])")
         
-        count = Float(dataArray[row])
-        
+        count = Float(dataArray[row])*60
+//        count = count * 60
         targetTime = count
         
         
@@ -144,6 +144,8 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
 
     
     @objc func down() {//1秒に一回よんでる
+        
+        
 
         if count <= 0{
             timer.invalidate()
@@ -182,7 +184,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         }
         Button3.isHidden = true
 
-        count = count * 60
+        
 //        if count >= 60{
 //            label.text = String(count - 1)
 //        }

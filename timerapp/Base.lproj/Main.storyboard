@@ -20,10 +20,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cV1-57-7qd" customClass="PieChartView" customModule="Charts">
-                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="752"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="76" translatesAutoresizingMaskIntoConstraints="NO" id="5SX-ov-NBR">
-                                        <rect key="frame" x="0.0" y="394" width="414" height="458"/>
+                                        <rect key="frame" x="0.0" y="294" width="414" height="458"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x3D-fL-4yR">
                                                 <rect key="frame" x="50" y="0.0" width="314" height="60"/>
@@ -66,6 +66,11 @@
                                                         </connections>
                                                     </button>
                                                 </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="Ldp-JM-D7Z" firstAttribute="leading" secondItem="LZE-RS-3u7" secondAttribute="trailing" constant="8" id="3ei-G9-af9"/>
+                                                    <constraint firstAttribute="bottom" secondItem="Ldp-JM-D7Z" secondAttribute="bottom" id="ZIN-AQ-dNY"/>
+                                                    <constraint firstItem="ee2-oS-8bd" firstAttribute="leading" secondItem="Ldp-JM-D7Z" secondAttribute="trailing" constant="8" id="gVC-a2-5qz"/>
+                                                </constraints>
                                             </stackView>
                                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6iB-zR-a1m">
                                                 <rect key="frame" x="0.0" y="242" width="414" height="216"/>
@@ -93,10 +98,18 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="cV1-57-7qd" secondAttribute="bottom" id="Nmd-4l-gBE"/>
+                            <constraint firstItem="cV1-57-7qd" firstAttribute="leading" secondItem="kxB-4k-kWJ" secondAttribute="leading" id="DOj-E4-ucd"/>
+                            <constraint firstItem="cV1-57-7qd" firstAttribute="trailing" secondItem="kxB-4k-kWJ" secondAttribute="trailing" id="EJ2-tG-Qxv"/>
+                            <constraint firstAttribute="bottom" secondItem="cV1-57-7qd" secondAttribute="bottom" constant="100" id="FAZ-nh-nJ2"/>
+                            <constraint firstAttribute="bottom" secondItem="cV1-57-7qd" secondAttribute="bottom" constant="100" id="H2T-Ho-yYB"/>
+                            <constraint firstItem="cV1-57-7qd" firstAttribute="trailing" secondItem="kxB-4k-kWJ" secondAttribute="trailing" id="JPH-bs-Ob4"/>
+                            <constraint firstAttribute="bottom" secondItem="cV1-57-7qd" secondAttribute="bottom" constant="100" id="Nmd-4l-gBE"/>
                             <constraint firstItem="cV1-57-7qd" firstAttribute="leading" secondItem="kxB-4k-kWJ" secondAttribute="leading" id="Utj-GP-cEm"/>
                             <constraint firstItem="cV1-57-7qd" firstAttribute="trailing" secondItem="kxB-4k-kWJ" secondAttribute="trailing" id="X3j-Ye-mtS"/>
+                            <constraint firstItem="cV1-57-7qd" firstAttribute="leading" secondItem="kxB-4k-kWJ" secondAttribute="leading" id="YQF-PN-dFG"/>
+                            <constraint firstItem="cV1-57-7qd" firstAttribute="top" secondItem="kxB-4k-kWJ" secondAttribute="top" id="Ye8-Nr-bmN"/>
                             <constraint firstItem="cV1-57-7qd" firstAttribute="top" secondItem="kxB-4k-kWJ" secondAttribute="top" id="ZKt-LU-LMJ"/>
+                            <constraint firstItem="cV1-57-7qd" firstAttribute="top" secondItem="kxB-4k-kWJ" secondAttribute="top" id="g2d-Se-WnC"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="kxB-4k-kWJ"/>
                     </view>
