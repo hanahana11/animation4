@@ -28,6 +28,8 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     @IBOutlet var Button2: UIButton!
     @IBOutlet var Button3: UIButton!
     
+    @IBOutlet weak var resultImageView: UIImageView!
+    
     var count : Float = 0
     
     var targetTime : Float!

@@ -19,6 +19,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="hanatimer.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="IkP-BY-oB8">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cV1-57-7qd" customClass="PieChartView" customModule="Charts">
                                 <rect key="frame" x="0.0" y="44" width="414" height="752"/>
                                 <subviews>
@@ -127,4 +131,7 @@
             <point key="canvasLocation" x="1581.1594202898552" y="99.776785714285708"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="hanatimer.jpg" width="225" height="225"/>
+    </resources>
 </document>
